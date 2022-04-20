@@ -1,0 +1,26 @@
+.container {
+    width: 1200px;
+    height: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    height: 135px;
+}
+
+.col {
+    width: 135px;
+    background-color: rgb(85, 45, 16);
+}
+
+.w {
+    background-color: rgb(222, 168, 107);
+}
+
+.possible {
+    background-color: red;
+}
+
+.possible-b {
+    background-color: darkred;
+}
