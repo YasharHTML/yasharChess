@@ -28,18 +28,14 @@ const checkPawnMove = (coordinate) => {
                 pawnMove.push(`${coordinate_to_letter(pawnColumnNumber)}${pawnRowNumber + 2}`);
             }
         } else {
-            var z = document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber + 1)).children[0]
-            var t = document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber + 1)).children[0]
-            o = typeof(document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber + 1)).children[0])
-            q = typeof(document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber + 1)).children[0])
-            if (o === 'undefined' && q === 'undefined') {
-
-            } else {
-                if (q != "undefined") {
-                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber + 1)}${pawnRowNumber + 1}`);
+            if (document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber + 1))) {
+                if (document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber + 1)).children[0]) {
+                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber - 1)}${pawnRowNumber + 1}`)
                 }
-                if (o != "undefined") {
-                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber - 1)}${pawnRowNumber + 1}`);
+            }
+            if (document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber + 1))) {
+                if (document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber + 1)).children[0]) {
+                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber + 1)}${pawnRowNumber + 1}`)
                 }
             }
             var front = document.getElementById(coordinate_to_letter(pawnColumnNumber) + (pawnRowNumber + 1)).children[0]
@@ -56,18 +52,14 @@ const checkPawnMove = (coordinate) => {
                 pawnMove.push(`${coordinate_to_letter(pawnColumnNumber)}${pawnRowNumber - 2}`);
             }
         } else {
-            var z = document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber - 1)).children[0]
-            var t = document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber - 1)).children[0]
-            o = typeof(document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber - 1)).children[0])
-            q = typeof(document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber - 1)).children[0])
-            if (o === 'undefined' && q === 'undefined') {
-
-            } else {
-                if (q != "undefined") {
-                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber + 1)}${pawnRowNumber - 1}`);
+            if (document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber - 1))) {
+                if (document.getElementById(coordinate_to_letter(pawnColumnNumber - 1) + (pawnRowNumber - 1)).children[0]) {
+                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber - 1)}${pawnRowNumber - 1}`)
                 }
-                if (o != "undefined") {
-                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber - 1)}${pawnRowNumber - 1}`);
+            }
+            if (document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber - 1))) {
+                if (document.getElementById(coordinate_to_letter(pawnColumnNumber + 1) + (pawnRowNumber - 1)).children[0]) {
+                    pawnMove.push(`${coordinate_to_letter(pawnColumnNumber + 1)}${pawnRowNumber - 1}`)
                 }
             }
             var front = document.getElementById(coordinate_to_letter(pawnColumnNumber) + (pawnRowNumber - 1)).children[0]

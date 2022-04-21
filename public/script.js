@@ -77,6 +77,15 @@ document.addEventListener("click", (e) => {
                 }
             })
         }
+        if (e.target.classList.contains("bishop")) {
+            checkBishopMove(e.target.parentElement.id).forEach(element => {
+                if (document.getElementById(element).classList.contains("w")) {
+                    document.getElementById(element).classList.add("possible");
+                } else {
+                    document.getElementById(element).classList.add("possible-b");
+                }
+            })
+        }
         origin_id = e.target.parentElement.id;
         e.target.classList.add("selected");
         origin = e.target;
@@ -109,6 +118,15 @@ document.addEventListener("click", (e) => {
             e.target.parentElement.removeChild(e.target);
             origin.parentElement.removeChild(origin);
             t.appendChild(origin);
+        } else if (document.getElementById(origin_id).children[0].classList.contains("bishop") && checkBishopMove(origin_id).includes(e.target.parentElement.id)) {
+            flag = false;
+            socket.emit("capture", { "origin": origin_id, "target": e.target.parentElement.id });
+            origin.classList.remove("selected");
+            var t = e.target.parentElement;
+            removePossibles();
+            e.target.parentElement.removeChild(e.target);
+            origin.parentElement.removeChild(origin);
+            t.appendChild(origin);
         } else {
             alert("Invalid move");
         }
@@ -121,6 +139,13 @@ document.addEventListener("click", (e) => {
             e.target.append(origin);
             flag = false;
         } else if (document.getElementById(origin_id).children[0].classList.contains("knight") && checkKnightMove(origin_id).includes(e.target.id)) {
+            socket.emit("move", { "origin": origin_id, "target": e.target.id });
+            removePossibles();
+            origin.parentElement.removeChild(origin);
+            origin.classList.remove("selected");
+            e.target.append(origin);
+            flag = false;
+        } else if (document.getElementById(origin_id).children[0].classList.contains("bishop") && checkBishopMove(origin_id).includes(e.target.id)) {
             socket.emit("move", { "origin": origin_id, "target": e.target.id });
             removePossibles();
             origin.parentElement.removeChild(origin);
